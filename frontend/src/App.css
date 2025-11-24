@@ -1,0 +1,128 @@
+/* Global app styles */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  color: var(--secondary-color);
+}
+
+.spinner {
+  border: 3px solid var(--border-dark);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--danger-color);
+  border-radius: 0.375rem;
+  padding: 1rem;
+  color: var(--danger-color);
+  margin-bottom: 1rem;
+}
+
+.success-message {
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid var(--success-color);
+  border-radius: 0.375rem;
+  padding: 1rem;
+  color: var(--success-color);
+  margin-bottom: 1rem;
+}
+
+.warning-message {
+  background-color: rgba(245, 158, 11, 0.1);
+  border: 1px solid var(--warning-color);
+  border-radius: 0.375rem;
+  padding: 1rem;
+  color: var(--warning-color);
+  margin-bottom: 1rem;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--bg-darker);
+  border: 1px solid var(--border-dark);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.table thead {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid var(--border-dark);
+}
+
+.table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.table tbody tr:hover {
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+.table-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (prefers-color-scheme: light) {
+  .table {
+    background-color: var(--bg-light);
+  }
+
+  .table thead {
+    background-color: #f9fafb;
+  }
+}
