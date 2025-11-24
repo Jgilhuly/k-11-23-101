@@ -8,12 +8,13 @@ from models import Product, ProductCreate, ProductUpdate, User, UserCreate, User
 class InMemoryDatabase:
     """In-memory database for storing and managing products and users."""
 
-    def __init__(self):
+    def __init__(self, init_sample_data: bool = True):
         self.products: List[Product] = []
         self.next_id = 1
         self.users: List[User] = []
         self.next_user_id = 1
-        self._init_sample_data()
+        if init_sample_data:
+            self._init_sample_data()
 
     def _init_sample_data(self):
         """Initialize the database with sample product data."""
@@ -48,7 +49,7 @@ class InMemoryDatabase:
         """Create a new product in the database."""
         product = Product(
             id=self.next_id,
-            **product_data.dict(),
+            **product_data.model_dump(),
             created_at=datetime.now()
         )
         self.products.append(product)
@@ -72,7 +73,7 @@ class InMemoryDatabase:
         if not product:
             return None
 
-        update_dict = update_data.dict(exclude_unset=True)
+        update_dict = update_data.model_dump(exclude_unset=True)
         for field, value in update_dict.items():
             setattr(product, field, value)
 
@@ -90,7 +91,7 @@ class InMemoryDatabase:
         """Create a new user in the database."""
         user = User(
             id=self.next_user_id,
-            **user_data.dict(),
+            **user_data.model_dump(),
             created_at=datetime.now()
         )
         self.users.append(user)
@@ -114,7 +115,7 @@ class InMemoryDatabase:
         if not user:
             return None
 
-        update_dict = update_data.dict(exclude_unset=True)
+        update_dict = update_data.model_dump(exclude_unset=True)
         for field, value in update_dict.items():
             setattr(user, field, value)
 
